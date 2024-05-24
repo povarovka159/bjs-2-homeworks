@@ -20,7 +20,9 @@ Student.prototype.addMarks = function(...marks) {
 };
 
 Student.prototype.getAverage = function() {
-	if (this.marks && this.marks.length >= 1) {
+	if (!(this.marks && this.marks.length >= 1)) {
+		return 0;
+	} else {
 		return this.marks.reduce((acc, item, index, marks) => {
 			acc += item;
 			if (index === marks.length - 1) {
@@ -28,8 +30,6 @@ Student.prototype.getAverage = function() {
 			}
 			return acc;
 		}, 0)
-	} else {
-		return 0;
 	}
 };
 
